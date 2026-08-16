@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Invitation</title>
+
+    <!-- ===== CONFIGURATION ===== -->
+    <script>
+        // ── Edit these values to customize the invitation ──
+        window.WEDDING_CONFIG = {
+            // Couple
+            groom: 'Hiếu Trung',
+            bride: 'Hạ San',
+            groomTitle: 'Groom',
+            brideTitle: 'Bride',
+
+            // Date & Time
+            date: '10.13.2026',
+            dateLong: '13',
+            monthLong: 'October',
+            yearLong: '2026',
+            // lunarDate: '(Tức ngày 05 tháng 09 năm Ất Tỵ)',
+            // eventTime: '17:30',
+            // dayOfWeek: 'thứ bảy',
+
+            // Venue
+            venueName: 'Novotel Hotel',
+            venueAddress: '2 P. Thái Hà, Str, Đống Đa, Hà Nội 100000, Vietnam',
+            venueMapLink: 'https://www.google.com/maps/place/Novotel+H%C3%A0+N%E1%BB%99i+Th%C3%A1i+H%C3%A0/@21.009892,105.8214427,17z/data=!3m1!4b1!4m9!3m8!1s0x3135ad8a205928b5:0x46e77ee250af2fa8!5m2!4m1!1i2!8m2!3d21.009892!4d105.824023!16s%2Fg%2F11h6s5x_g4?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D',
+
+            // Parents
+            // groomFather: 'Ông. Nguyễn Hùng Vương',
+            // groomMother: 'Bà. Trần Thị Bích Phương',
+            // brideFather: 'Ông. Lưu Chí Hiếu',
+            // brideMother: 'Bà. Nguyễn Ngọc Ánh',
+
+            // Countdown target (Unix timestamp in milliseconds)
+            countdownTarget: 1791889200000, // 13 Oct 2026 17:30 GMT+7
+
+            // Gallery images (URLs)
+            galleryImages: [
+                'images/1.jpg',
+                'images/2.jpg',
+                'images/3.jpg',
+                'images/4.jpg',
+                'images/5.jpg',
+                'images/6.jpg',
+            ],
+
+            // Gallery thumbnails (same as images, or smaller versions)
+            galleryThumbs: [
+                'images/1.jpg',
+                'images/2.jpg',
+                'images/3.jpg',
+                'images/4.jpg',
+                'images/5.jpg',
+                'images/6.jpg',
+            ],
+
+            // // Music (URLs)
+            // musicList: ['https://camcui.vn/bai103.mp3'],
+
+            // // Social links
+            // social: {
+            //     facebook: 'https://www.facebook.com/profile.php?id=61557384251600',
+            //     tiktok: 'https://www.tiktok.com/@thiepcuoi.online',
+            //     zalo: 'https://zalo.me/0968378902'
+            // },
+
+            // RSVP form endpoint (if you have one)
+            formEndpoint: 'https://discord.com/api/webhooks/1538229205366612120/H4Ooc_Y78CN5qFMqocQZeoz3h9M3aoQIdUu6p2y-d9j9spMWrA3oWugWudHf3aM-zQTX'
+        };
+    </script>
+
+    <!-- ===== FONTS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+               RESET & BASE
+               ============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            background: #fff;
+            color: #52613e;
+            line-height: 1.6;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ============================================================
+               CUSTOM PROPERTIES (THEME)
+               ============================================================ */
+        :root {
+            --color-primary: #52613e;
+            --color-primary-light: #7a8f62;
+            --color-gold: #c4b49c;
+            --color-gold-light: #e6dbc8;
+            --color-cream: #fdf8f2;
+            --color-white: #ffffff;
+            --color-dark: #1a1a1a;
+
+            --font-display: 'Open Sans', sans-serif;
+            --font-serif: 'Open Sans', sans-serif;
+            --font-script: 'Open Sans', sans-serif;
+
+            --radius: 20px;
+            --radius-full: 1000px;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+            --page-width: 420px;
+            --section-gap: 0;
+        }
+
+        /* ============================================================
+               LAYOUT
+               ============================================================ */
+        .ladi-wraper {
+            max-width: var(--page-width);
+            margin: 0 auto;
+            min-height: 100vh;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .section {
+            position: relative;
+            width: 100%;
+        }
+
+        .section-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: var(--page-width);
+            margin: 0 auto;
+        }
+
+        /* ============================================================
+               UTILITY
+               ============================================================ */
+        .text-center {
+            text-align: center;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        /* ============================================================
+               ANIMATIONS
+               ============================================================ */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes rotateInDownLeft {
+            0% {
+                transform: rotate(-90deg);
+                opacity: 0;
+                transform-origin: left bottom;
+            }
+            100% {
+                transform: rotate(0);
+                opacity: 1;
+                transform-origin: left bottom;
+            }
+        }
+
+        @keyframes rotateInDownRight {
+            0% {
+                transform: rotate(90deg);
+                opacity: 0;
+                transform-origin: right bottom;
+            }
+            100% {
+                transform: rotate(0);
+                opacity: 1;
+                transform-origin: right bottom;
+            }
+        }
+
+        .anim-fade-up {
+            animation: fadeInUp 1s ease both;
+        }
+        .anim-fade-left {
+            animation: fadeInLeft 1s ease both;
+        }
+        .anim-fade-right {
+            animation: fadeInRight 1s ease both;
+        }
+        .anim-fade-down {
+            animation: fadeInDown 1s ease both;
+        }
+        .anim-pulse {
+            animation: pulse 1s ease infinite both;
+        }
+        .anim-rotate-left {
+            animation: rotateInDownLeft 1s ease both;
+        }
+        .anim-rotate-right {
+            animation: rotateInDownRight 1s ease both;
+        }
+
+        .anim-delay-1 {
+            animation-delay: 0.5s;
+        }
+        .anim-delay-2 {
+            animation-delay: 1s;
+        }
+        .anim-delay-3 {
+            animation-delay: 1.5s;
+        }
+        .anim-delay-4 {
+            animation-delay: 2s;
+        }
+
+        /* ============================================================
+               SECTION 1 – HERO
+               ============================================================ */
+        .hero {
+            height: 692.7px;
+            background: var(--color-cream);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                url('https://w.ladicdn.com/s750x950/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0033_1-20251010160355-v6bgi.png') no-repeat center/cover;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-floral-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: auto;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .hero-floral-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 130px;
+            height: auto;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-floral-right {
+            position: absolute;
+            top: 30%;
+            right: 0;
+            width: 120px;
+            height: auto;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            font-family: var(--font-script);
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 4px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .hero-title small {
+            font-size: 28px;
+            font-weight: 300;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .hero-date {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            color: var(--color-primary);
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--color-primary);
+            margin: 16px auto;
+            opacity: 0.3;
+        }
+
+        .hero-sub {
+            font-size: 13px;
+            color: var(--color-primary);
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+            max-width: 240px;
+        }
+
+        /* photo frames inside hero */
+        .hero-photos {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-photo-frame {
+            position: absolute;
+            border: 2px solid rgba(241, 243, 244, 0.8);
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            transform: rotate(var(--rot, 0deg));
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero-photo-frame--1 {
+            width: 230px;
+            height: 460px;
+            top: 20px;
+            left: 18px;
+            --rot: -6deg;
+            background-image: url('images/2.jpg');
+        }
+
+        .hero-photo-frame--2 {
+            width: 230px;
+            height: 460px;
+            bottom: 48px;
+            right: 18px;
+            --rot: 4deg;
+            background-image: url('images/1.jpg');
+        }
+
+        /* ============================================================
+               SECTION 2 – COUPLE NAMES (Banner)
+               ============================================================ */
+        .couple-banner {
+            height: 552.6px;
+            background:
+                url('images/4.jpg') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .couple-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 1;
+        }
+
+        .couple-banner-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .couple-banner-content h2 {
+            font-family: var(--font-script);
+            font-size: 34px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .couple-banner-content p {
+            font-size: 13px;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            margin-top: 6px;
+        }
+
+        /* ============================================================
+               SECTION 3 – DETAILS
+               ============================================================ */
+        .details {
+            padding: 50px 20px 40px;
+            background: var(--color-cream);
+            position: relative;
+        }
+
+        .details-floral-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .details-floral-right {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 150px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .details-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .details-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .details-card .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 4px;
+        }
+
+        .details-card .value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .details-card .value.small {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .details-card .sub {
+            font-size: 13px;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
+        .details-couple-names {
+            font-family: var(--font-display);
+            font-size: 38px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            color: var(--color-primary);
+        }
+
+        .details-couple-names span {
+            display: inline-block;
+        }
+
+        .details-couple-names .amp {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.4;
+            margin: 0 6px;
+        }
+
+        .details-parents {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 32px;
+            font-size: 13px;
+            color: var(--color-primary);
+            opacity: 0.75;
+        }
+
+        .details-parents strong {
+            font-weight: 600;
+            opacity: 1;
+        }
+
+        .details-venue-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            padding: 6px 18px;
+            border-radius: 30px;
+            transition: all 0.2s;
+            margin-top: 6px;
+        }
+
+        .details-venue-link:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .details-venue-link svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ============================================================
+               SECTION 4 – QUOTE
+               ============================================================ */
+        .quote-section {
+            height: 370.7px;
+            background:
+                url('https://w.ladicdn.com/s750x700/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0009_25-20251010165309-zhafr.png') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .quote-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .quote-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .quote-content h2 {
+            font-family: var(--font-script);
+            font-size: 40px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .quote-content p {
+            font-size: 15px;
+            opacity: 0.85;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+               SECTION 5 – STORY / ABOUT
+               ============================================================ */
+        .story-section {
+            padding: 50px 20px 40px;
+            background: var(--color-cream);
+            position: relative;
+        }
+
+        .story-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .story-section h2 {
+            font-family: var(--font-script);
+            font-size: 32px;
+            color: var(--color-primary);
+            text-align: center;
+        }
+
+        .story-section p {
+            font-size: 14px;
+            text-align: center;
+            max-width: 340px;
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        .story-photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .story-photo {
+            width: 140px;
+            height: 160px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transform: rotate(var(--rot, 0deg));
+            transition: transform 0.3s;
+        }
+
+        .story-photo:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .story-photo--1 {
+            --rot: 3deg;
+            background-image: url('https://w.ladicdn.com/s500x550/6322a62f2dad980013bb5005/anh-chup-man-hinh-2026-01-30-luc-141703-20260130071739-2en7o.png');
+        }
+
+        .story-photo--2 {
+            --rot: -4deg;
+            background-image: url('https://w.ladicdn.com/s500x550/6322a62f2dad980013bb5005/anh-chup-man-hinh-2026-01-30-luc-141724-20260130071739-yjtom.png');
+        }
+
+        /* ============================================================
+               SECTION 6 – TIMELINE
+               ============================================================ */
+        .timeline-section {
+            padding: 50px 20px 40px;
+            background: #fff;
+            position: relative;
+        }
+
+        .timeline-section h2 {
+            font-family: var(--font-script);
+            font-size: 36px;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .timeline-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--color-cream);
+            border-radius: var(--radius);
+            border: 1px solid rgba(82, 97, 62, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(4px);
+        }
+
+        .timeline-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .timeline-info {
+            flex: 1;
+        }
+
+        .timeline-info .time {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--color-primary);
+        }
+
+        .timeline-info .desc {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* ============================================================
+               SECTION 7 – DRESSCODE
+               ============================================================ */
+        .dresscode-section {
+            padding: 40px 20px 50px;
+            background: var(--color-cream);
+            text-align: center;
+        }
+
+        .dresscode-section h2 {
+            font-family: var(--font-script);
+            font-size: 32px;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+        }
+
+        .dresscode-section p {
+            font-size: 13px;
+            opacity: 0.6;
+            margin-bottom: 16px;
+        }
+
+        .dresscode-swatches {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .swatch {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .swatch--1 {
+            background: #e6dbc8;
+        }
+        .swatch--2 {
+            background: #ccb9a4;
+        }
+
+        /* ============================================================
+               SECTION 8 – COUNTDOWN
+               ============================================================ */
+        .countdown-section {
+            padding: 50px 20px 40px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .countdown-section h2 {
+            font-family: var(--font-script);
+            font-size: 28px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 2px;
+        }
+
+        .countdown-item {
+            background: var(--color-cream);
+            padding: 8px 12px;
+            min-width: 60px;
+            border-radius: 8px;
+            border: 1px solid rgba(82, 97, 62, 0.06);
+        }
+
+        .countdown-item .label {
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.4;
+            margin-top: 2px;
+        }
+
+        .countdown-sep {
+            font-size: 40px;
+            font-weight: 300;
+            opacity: 0.3;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ============================================================
+               SECTION 9 – GALLERY
+               ============================================================ */
+        .gallery-section {
+            background: var(--color-cream);
+            padding: 40px 0 50px;
+        }
+
+        .gallery-section h2 {
+            font-family: var(--font-script);
+            font-size: 30px;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .gallery-view {
+            position: relative;
+            height: 480px;
+            overflow: hidden;
+            background: #f5f0ea;
+        }
+
+        .gallery-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 6px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .gallery-thumbs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-thumb {
+            flex: 0 0 60px;
+            height: 60px;
+            border-radius: 6px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s, transform 0.2s;
+            opacity: 0.5;
+        }
+
+        .gallery-thumb:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .gallery-thumb.active {
+            border-color: var(--color-primary);
+            opacity: 1;
+        }
+
+        /* ============================================================
+               SECTION 10 – RSVP FORM
+               ============================================================ */
+        .rsvp-section {
+            padding: 50px 20px 40px;
+            background: #fff;
+            position: relative;
+        }
+
+        .rsvp-section h2 {
+            font-family: var(--font-script);
+            font-size: 26px;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .rsvp-section .sub {
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 24px;
+        }
+
+        .rsvp-form {
+            max-width: 360px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .rsvp-form .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .rsvp-form .field label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .rsvp-form .field input,
+        .rsvp-form .field select,
+        .rsvp-form .field textarea {
+            font-family: inherit;
+            font-size: 14px;
+            padding: 10px 14px;
+            border: 1px solid var(--color-primary);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.5);
+            color: var(--color-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .rsvp-form .field input:focus,
+        .rsvp-form .field select:focus,
+        .rsvp-form .field textarea:focus {
+            outline: none;
+            border-color: var(--color-primary-light);
+            box-shadow: 0 0 0 3px rgba(82, 97, 62, 0.08);
+        }
+
+        .rsvp-form .field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .rsvp-form .field select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,%3Csvg width='32' height='24' viewBox='0 0 32 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,0 32,0 16,24' fill='%2352613e'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px 8px;
+            padding-right: 36px;
+        }
+
+        .rsvp-form .btn-submit {
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 14px;
+            border: 1px solid var(--color-primary);
+            border-radius: 28px;
+            background: var(--color-primary);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            margin-top: 4px;
+        }
+
+        .rsvp-form .btn-submit:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-1px);
+        }
+
+        .rsvp-form .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        /* ============================================================
+               SECTION 11 – FOOTER
+               ============================================================ */
+        .footer {
+            padding: 40px 20px 30px;
+            background:
+                url('https://w.ladicdn.com/s750x650/6322a62f2dad980013bb5005/anh-chup-man-hinh-2026-01-30-luc-142326-20260130072401-vvobg.png') no-repeat center/cover;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content h2 {
+            font-family: var(--font-script);
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .footer-content p {
+            font-size: 13px;
+            opacity: 0.75;
+            max-width: 300px;
+            margin: 8px auto 16px;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            transition: background 0.2s, transform 0.2s;
+            font-size: 18px;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            opacity: 0.4;
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+               MUSIC TOGGLE (fixed)
+               ============================================================ */
+        #music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            backdrop-filter: blur(6px);
+            border: none;
+            padding: 0;
+        }
+
+        #music-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+        }
+
+        #music-toggle svg {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+            display: block;
+        }
+
+        #music-toggle.playing {
+            background: linear-gradient(135deg, rgba(255, 243, 224, 0.95), rgba(255, 250, 240, 0.95));
+        }
+
+        #music-toggle.playing::after {
+            content: '';
+            position: absolute;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            right: -8px;
+            bottom: -8px;
+            z-index: -1;
+            animation: pulse-ring 1.6s infinite;
+            opacity: 0.14;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.35), transparent 40%);
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.85);
+                opacity: 0.18;
+            }
+            70% {
+                transform: scale(1.25);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================
+               POPUP (thank you)
+               ============================================================ */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 90000060;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .popup-overlay.open {
+            display: flex;
+        }
+
+        .popup-box {
+            max-width: 400px;
+            width: 100%;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px 24px 24px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-box .close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: opacity 0.2s;
+            background: none;
+            border: none;
+            color: #000;
+        }
+
+        .popup-box .close:hover {
+            opacity: 0.8;
+        }
+
+        .popup-box h3 {
+            font-family: var(--font-script);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+        }
+
+        .popup-box p {
+            font-size: 14px;
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+               RESPONSIVE TWEAKS
+               ============================================================ */
+        @media (max-width: 440px) {
+            .hero-title {
+                font-size: 34px;
+            }
+            .hero-title small {
+                font-size: 20px;
+            }
+            .details-couple-names {
+                font-size: 28px;
+            }
+            .countdown-grid {
+                font-size: 32px;
+            }
+            .countdown-item {
+                min-width: 44px;
+                padding: 4px 8px;
+            }
+            .gallery-view {
+                height: 360px;
+            }
+            .hero-photo-frame--1,
+            .hero-photo-frame--2 {
+                width: 170px;
+                height: 170px;
+            }
+            .hero-photo-frame--1 {
+                top: 36px;
+                left: 8px;
+            }
+            .hero-photo-frame--2 {
+                bottom: 72px;
+                right: 8px;
+            }
+            .quote-content h2 {
+                font-size: 28px;
+            }
+            .timeline-item {
+                padding: 12px 16px;
+            }
+            .timeline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .ladi-wraper {
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.04);
+            }
+            .hero-photo-frame--1,
+            .hero-photo-frame--2 {
+                width: 240px;
+                height: 240px;
+            }
+            .hero-photo-frame--1 {
+                top: 36px;
+                left: 28px;
+            }
+            .hero-photo-frame--2 {
+                bottom: 72px;
+                right: 28px;
+            }
+            .gallery-view {
+                height: 520px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ladi-wraper">
+
+        <!-- ============================================================
+        SECTION 1 – HERO
+        ============================================================ -->
+        <section class="section hero" id="hero">
+            <div class="hero-bg"></div>
+
+            <!-- decorative florals -->
+            <div class="hero-floral-top">
+                <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;opacity:0.4;">
+                    <path d="M10 30 Q30 10 50 30 Q70 50 90 30 Q110 10 130 30 Q150 50 170 30 Q190 10 200 30"
+                    stroke="#52613e" stroke-width="1.5" stroke-dasharray="3 4" />
+                    <circle cx="30" cy="20" r="4" fill="#52613e" opacity="0.3" />
+                    <circle cx="80" cy="15" r="3" fill="#52613e" opacity="0.2" />
+                    <circle cx="130" cy="25" r="5" fill="#52613e" opacity="0.25" />
+                    <circle cx="170" cy="18" r="3" fill="#52613e" opacity="0.2" />
+                </svg>
+            </div>
+
+            <div class="hero-photos">
+                <div class="hero-photo-frame hero-photo-frame--1"></div>
+                <div class="hero-photo-frame hero-photo-frame--2"></div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-badge anim-fade-up">Save the Date</div>
+                <h1 class="hero-title anim-fade-up anim-delay-1">
+                    <span data-key="groom">Hiếu Trung  </span>
+                    <small>&amp;</small>
+                    <span data-key="bride">Hạ San</span>
+                </h1>
+                <div class="hero-divider anim-fade-up anim-delay-2"></div>
+                <div class="hero-date anim-fade-up anim-delay-2" data-key="date">10.13.2026</div>
+                <div class="hero-sub anim-fade-up anim-delay-3">Please come to join us!</div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 2 – COUPLE BANNER
+        ============================================================ -->
+        <section class="section couple-banner">
+            <div class="couple-banner-content">
+                <!-- <p style="font-size:12px;letter-spacing:2px;opacity:0.7;"></p> -->
+                <h2 data-key="groom">Hiếu Trung</h2>
+                <p style="font-size:11px;opacity:0.5;">&amp;</p>
+                <h2 data-key="bride">Hạ San</h2>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 3 – DETAILS
+        ============================================================ -->
+        <section class="section details" id="details">
+            <div class="container">
+                <div class="details-grid">
+
+                    <!-- Parents -->
+                    <!-- <div class="details-card anim-fade-up">
+                        <div class="label">Nhà trai</div>
+                        <div class="details-parents">
+                            <span><strong data-key="groomFather">Ông. Nguyễn Hùng Vương</strong></span>
+                            <span><strong data-key="groomMother">Bà. Trần Thị Bích Phương</strong></span>
+                        </div>
+                        <div style="height:12px;"></div>
+                        <div class="label">Nhà gái</div>
+                        <div class="details-parents">
+                            <span><strong data-key="brideFather">Ông. Lưu Chí Hiếu</strong></span>
+                            <span><strong data-key="brideMother">Bà. Nguyễn Ngọc Ánh</strong></span>
+                        </div>
+                    </div> -->
+
+                    <!-- Couple names -->
+                    <div class="details-card anim-fade-up anim-delay-1">
+                        <div class="details-couple-names">
+                            <span data-key="groom">Hiếu Trung</span>
+                            <span class="amp">&amp;</span>
+                            <span data-key="bride">Hạ San</span>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="details-card anim-fade-up anim-delay-2">
+                        <div class="label">Date</div>
+                        <!-- <div class="value">
+                            <span data-key="eventTime">17:30</span>,
+                            <span data-key="dayOfWeek">thứ bảy</span>
+                        </div> -->
+                        <div class="value" style="font-size:32px;font-weight:700;margin-top:2px;">
+                            <span data-key="dateLong">On the 13th</span>
+                        </div>
+                        <div class="value small">
+                            <span data-key="monthLong">October</span>
+                            <span data-key="yearLong">2026</span>
+                        </div>
+                        <!-- <div class="sub" data-key="lunarDate">(Tức ngày 05 tháng 09 năm Ất Tỵ)</div>
+                    </div> -->
+
+                    <!-- Venue -->
+                    <div class="details-card anim-fade-up anim-delay-3">
+                        <div class="label">Location</div>
+                        <div class="value" style="font-size:16px;" data-key="venueName">The Opera Wedding &amp; Convention Center</div>
+                        <div class="sub" data-key="venueAddress">Novotel Hotel</div>
+                        <a href="#" target="_blank" class="details-venue-link" data-key="venueMapLink">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Direction
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 4 – QUOTE
+============================================================ -->
+        <!-- <section class="section quote-section">
+            <div class="quote-content">
+                <h2>All of me loves<br />all of you</h2>
+                <p>— một lời yêu thương dành cho nhau —</p>
+            </div>
+        </section> -->
+        <!-- ============================================================
+        SECTION 5 – STORY
+        ============================================================ -->
+        <!-- <section class="section story-section" id="story">
+            <div class="container">
+                <h2 class="anim-fade-up">Chuyện của chúng mình</h2>
+                <p class="anim-fade-up anim-delay-1">
+                    Tình yêu của anh và em là một hành trình kỳ diệu, vượt qua bao thử thách
+                    để cùng nhau bước đến ngày trọng đại – đám cưới của chúng mình.
+                    <br /><br />
+                    Đám cưới này là lời cam kết chân thành, là sự bắt đầu của một chương mới
+                    – nơi chúng ta cùng vun đắp tổ ấm, cùng sẻ chia mọi vui buồn
+                    và cùng nắm tay nhau đi đến cuối con đường mang tên hạnh phúc.
+                </p>
+                <div class="story-photos anim-fade-up anim-delay-2">
+                    <div class="story-photo story-photo--1"></div>
+                    <div class="story-photo story-photo--2"></div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- ============================================================
+        SECTION 6 – TIMELINE
+        ============================================================ -->
+        <section class="section timeline-section" id="timeline">
+            <div class="container">
+                <h2 class="anim-fade-up">Timeline</h2>
+                <div class="timeline-grid">
+                    <div class="timeline-item anim-fade-left">
+                        <div class="timeline-icon">🕊️</div>
+                        <div class="timeline-info">
+                            <div class="time">6 pm</div>
+                            <div class="desc">Greeting and Reception</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item anim-fade-right anim-delay-1">
+                        <div class="timeline-icon">🥂</div>
+                        <div class="timeline-info">
+                            <div class="time">7 pm</div>
+                            <div class="desc">Main Event</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 7 – DRESSCODE
+        ============================================================ -->
+        <!-- <section class="section dresscode-section" id="dresscode">
+            <div class="container">
+                <h2 class="anim-fade-up">Dresscode</h2>
+                <p class="anim-fade-up anim-delay-1">Hãy đến với trang phục nhẹ nhàng, thanh lịch</p>
+                <div class="dresscode-swatches anim-fade-up anim-delay-2">
+                    <div class="swatch swatch--1"></div>
+                    <div class="swatch swatch--2"></div>
+                </div>
+                <p style="font-size:12px;opacity:0.4;margin-top:12px;">màu trung tính – be – nâu nhạt</p>
+            </div>
+        </section> -->
+
+        <!-- ============================================================
+        SECTION 8 – COUNTDOWN
+        ============================================================ -->
+        <section class="section countdown-section" id="countdown">
+            <div class="container">
+                <h2 class="anim-fade-up">Countdown</h2>
+                <div class="countdown-grid" id="countdownDisplay">
+                    <div class="countdown-item">
+                        <span id="cdDays">00</span>
+                        <div class="label">Ngày</div>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-item">
+                        <span id="cdHours">00</span>
+                        <div class="label">Giờ</div>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-item">
+                        <span id="cdMinutes">00</span>
+                        <div class="label">Phút</div>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-item">
+                        <span id="cdSeconds">00</span>
+                        <div class="label">Giây</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 9 – GALLERY
+        ============================================================ -->
+        <section class="section gallery-section" id="gallery">
+            <div class="container">
+                <h2 class="anim-fade-up">Our moments</h2>
+                <div class="gallery-container anim-fade-up anim-delay-1">
+                    <div class="gallery-view" id="galleryView">
+                        <!-- slides injected by JS -->
+                    </div>
+                    <div class="gallery-thumbs" id="galleryThumbs">
+                        <!-- thumbs injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 10 – RSVP
+        ============================================================ -->
+        <section class="section rsvp-section" id="rsvp">
+            <div class="container">
+                <h2 class="anim-fade-up">RSVP</h2>
+                <p class="sub anim-fade-up anim-delay-1">
+                    Please let us know if you can join us. We would love to celebrate this special day with you!
+                </p>
+                <form class="rsvp-form" id="rsvpForm">
+                    <div class="field anim-fade-up anim-delay-1">
+                        <label for="rsvpName">Your Name</label>
+                        <input type="text" id="rsvpName" placeholder="Enter your full name..." required />
+                    </div>
+                    <div class="field anim-fade-up anim-delay-2">
+                        <label for="rsvpAttend">Will you attend?</label>
+                        <select id="rsvpAttend" required>
+                            <option value="">-- Select --</option>
+                            <option value="I will definitely attend">I will definitely attend</option>
+                            <option value="Sorry, I am busy!">Sorry, I am busy!</option>
+                        </select>
+                    </div>
+                    <div class="field anim-fade-up anim-delay-2">
+                        <label for="rsvpGuest">You are a guest of whom?</label>
+                        <select id="rsvpGuest" required>
+                            <option value="">-- Select --</option>
+                            <option value="Bride's guest">Bride's guest</option>
+                            <option value="Groom's guest">Groom's guest</option>
+                        </select>
+                    </div>
+                    <div class="field anim-fade-up anim-delay-3">
+                        <label for="rsvpCount">Number of attendees</label>
+                        <input type="number" id="rsvpCount" placeholder="1" min="1" value="1" />
+                    </div>
+                    <div class="field anim-fade-up anim-delay-3">
+                        <label for="rsvpMessage">Message to the bride and groom</label>
+                        <textarea id="rsvpMessage" placeholder="Send your wishes..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit anim-fade-up anim-delay-4">Send Message &amp; Confirm</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 11 – FOOTER
+        ============================================================ -->
+        <footer class="section footer" id="footer">
+            <div class="footer-content">
+                <h2>Thank you</h2>
+                <p>
+                    Thank you for your love and support!<br />
+                    Your presence is the most meaningful gift.
+                </p>
+                <!-- <div class="footer-social">
+                    <a href="#" target="_blank" data-key="socialFacebook" aria-label="Facebook">📘</a>
+                    <a href="#" target="_blank" data-key="socialTiktok" aria-label="TikTok">🎵</a>
+                    <a href="#" target="_blank" data-key="socialZalo" aria-label="Zalo">💬</a>
+                </div> -->
+                <!-- <div class="footer-copy">JMII Wedding Invitation</div> -->
+            </div>
+        </footer>
+
+    </div><!-- /.ladi-wraper -->
+
+    <!-- ============================================================
+    THANK YOU POPUP
+    ============================================================ -->
+    <div class="popup-overlay" id="thankYouPopup">
+        <div class="popup-box">
+            <button class="close" id="popupClose">&times;</button>
+            <h3>Thank you!</h3>
+            <p>Thank you for taking the time to respond.<br />We truly appreciate your presence.</p>
+            <div style="margin-top:12px;font-size:13px;opacity:0.3;">❤️</div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MUSIC TOGGLE
+    ============================================================ -->
+    <button id="music-toggle" aria-label="Bật/tắt nhạc" title="Bật/tắt nhạc">
+        <!-- Sound on -->
+        <svg id="icon-on" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <polygon points="3 9 7 9 11 5 11 19 7 15 3 15" />
+            <path d="M14 9.5a3 3 0 0 1 0 5" />
+            <path d="M16.5 7a6 6 0 0 1 0 10" />
+        </svg>
+        <!-- Sound off -->
+        <svg id="icon-off" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 9 7 9 11 5 11 19 7 15 3 15" />
+            <line x1="16" y1="8" x2="21" y2="13" />
+            <line x1="21" y1="8" x2="16" y2="13" />
+        </svg>
+    </button>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---- CONFIG ----
+            const cfg = window.WEDDING_CONFIG || {};
+
+            // ---- HELPER: apply config to DOM ----
+            function applyConfig() {
+                const map = {
+                    groom: cfg.groom,
+                    bride: cfg.bride,
+                    groomFather: cfg.groomFather,
+                    groomMother: cfg.groomMother,
+                    brideFather: cfg.brideFather,
+                    brideMother: cfg.brideMother,
+                    date: cfg.date,
+                    dateLong: cfg.dateLong,
+                    monthLong: cfg.monthLong,
+                    yearLong: cfg.yearLong,
+                    lunarDate: cfg.lunarDate,
+                    eventTime: cfg.eventTime,
+                    dayOfWeek: cfg.dayOfWeek,
+                    venueName: cfg.venueName,
+                    venueAddress: cfg.venueAddress,
+                    venueMapLink: cfg.venueMapLink || '#',
+                    socialFacebook: cfg.social?.facebook || '#',
+                    socialTiktok: cfg.social?.tiktok || '#',
+                    socialZalo: cfg.social?.zalo || '#'
+                };
+
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (map[key] !== undefined) {
+                        if (el.tagName === 'A' && key === 'venueMapLink') {
+                            el.href = map[key];
+                        } else if (el.tagName === 'A' && key.startsWith('social')) {
+                            el.href = map[key];
+                        } else {
+                            el.textContent = map[key];
+                        }
+                    }
+                });
+            }
+
+            // ---- COUNTDOWN ----
+            function startCountdown(target) {
+                const daysEl = document.getElementById('cdDays');
+                const hoursEl = document.getElementById('cdHours');
+                const minsEl = document.getElementById('cdMinutes');
+                const secsEl = document.getElementById('cdSeconds');
+
+                if (!daysEl) return;
+
+                function pad(n) { return String(n).padStart(2, '0'); }
+
+                function tick() {
+                    const now = Date.now();
+                    let diff = Math.max(0, target - now);
+
+                    const days = Math.floor(diff / 86400000);
+                    diff -= days * 86400000;
+                    const hours = Math.floor(diff / 3600000);
+                    diff -= hours * 3600000;
+                    const mins = Math.floor(diff / 60000);
+                    diff -= mins * 60000;
+                    const secs = Math.floor(diff / 1000);
+
+                    daysEl.textContent = pad(days);
+                    hoursEl.textContent = pad(hours);
+                    minsEl.textContent = pad(mins);
+                    secsEl.textContent = pad(secs);
+
+                    if (diff <= 0) {
+                        clearInterval(interval);
+                    }
+                }
+
+                tick();
+                const interval = setInterval(tick, 1000);
+                return interval;
+            }
+
+            // ---- GALLERY ----
+            function initGallery(images, thumbs) {
+                const view = document.getElementById('galleryView');
+                const thumbContainer = document.getElementById('galleryThumbs');
+                if (!view || !thumbContainer) return;
+
+                // clear
+                view.innerHTML = '';
+                thumbContainer.innerHTML = '';
+
+                let current = 0;
+                const slides = [];
+
+                images.forEach((src, i) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'gallery-slide' + (i === 0 ? ' active' : '');
+                    slide.style.backgroundImage = 'url(' + src + ')';
+                    view.appendChild(slide);
+                    slides.push(slide);
+
+                    const thumb = document.createElement('div');
+                    thumb.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+                    thumb.style.backgroundImage = 'url(' + (thumbs[i] || src) + ')';
+                    thumb.dataset.index = i;
+                    thumb.addEventListener('click', function() {
+                        goTo(parseInt(this.dataset.index));
+                    });
+                    thumbContainer.appendChild(thumb);
+                });
+
+                function goTo(index) {
+                    if (index === current) return;
+                    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+                    const allThumbs = thumbContainer.querySelectorAll('.gallery-thumb');
+                    allThumbs.forEach((t, i) => t.classList.toggle('active', i === index));
+                    current = index;
+                }
+
+                // Auto-advance
+                let autoInterval = setInterval(() => {
+                    goTo((current + 1) % slides.length);
+                }, 4000);
+
+                // Pause on hover/touch
+                const container = view.closest('.gallery-container');
+                container.addEventListener('mouseenter', () => clearInterval(autoInterval));
+                container.addEventListener('mouseleave', () => {
+                    clearInterval(autoInterval);
+                    autoInterval = setInterval(() => {
+                        goTo((current + 1) % slides.length);
+                    }, 4000);
+                });
+                // for touch devices
+                container.addEventListener('touchstart', () => clearInterval(autoInterval), { passive: true });
+            }
+
+            // ---- MUSIC ----
+            function initMusic(tracks) {
+                if (!tracks || tracks.length === 0) return;
+
+                const toggle = document.getElementById('music-toggle');
+                const iconOn = document.getElementById('icon-on');
+                const iconOff = document.getElementById('icon-off');
+
+                let index = 0;
+                let audio = new Audio(tracks[index]);
+                audio.loop = false;
+                let started = false;
+                let playing = false;
+
+                function updateUI() {
+                    if (playing) {
+                        iconOn.style.display = 'block';
+                        iconOff.style.display = 'none';
+                        toggle.classList.add('playing');
+                        toggle.setAttribute('aria-pressed', 'true');
+                    } else {
+                        iconOn.style.display = 'none';
+                        iconOff.style.display = 'block';
+                        toggle.classList.remove('playing');
+                        toggle.setAttribute('aria-pressed', 'false');
+                    }
+                }
+
+                function safePlay() {
+                    return audio.play().then(() => {
+                        started = true;
+                        playing = true;
+                        updateUI();
+                    }).catch(() => {});
+                }
+
+                function pauseMusic() {
+                    audio.pause();
+                    playing = false;
+                    updateUI();
+                }
+
+                audio.addEventListener('ended', function() {
+                    index = (index + 1) % tracks.length;
+                    audio.src = tracks[index];
+                    audio.play().then(() => {
+                        playing = true;
+                        updateUI();
+                    }).catch(() => {
+                        playing = false;
+                        updateUI();
+                    });
+                });
+
+                // First gesture starts music
+                function firstGesture() {
+                    if (started) return;
+                    safePlay();
+                }
+                document.addEventListener('touchstart', firstGesture, { once: true, passive: true });
+                document.addEventListener('mousedown', firstGesture, { once: true });
+                document.addEventListener('wheel', firstGesture, { once: true });
+
+                // Toggle
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (!started) {
+                        safePlay();
+                        return;
+                    }
+                    if (playing) {
+                        pauseMusic();
+                    } else {
+                        safePlay();
+                    }
+                });
+
+                updateUI();
+            }
+
+            // ---- RSVP FORM ----
+            function initRSVP() {
+                const form = document.getElementById('rsvpForm');
+                const popup = document.getElementById('thankYouPopup');
+                const closeBtn = document.getElementById('popupClose');
+
+                if (!form) return;
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Simple validation
+                    const name = document.getElementById('rsvpName');
+                    const attend = document.getElementById('rsvpAttend');
+                    const guest = document.getElementById('rsvpGuest');
+
+                    if (!name.value.trim()) {
+                        name.focus();
+                        name.style.borderColor = '#c0392b';
+                        setTimeout(() => name.style.borderColor = '', 1500);
+                        return;
+                    }
+                    if (!attend.value) {
+                        attend.focus();
+                        attend.style.borderColor = '#c0392b';
+                        setTimeout(() => attend.style.borderColor = '', 1500);
+                        return;
+                    }
+                    if (!guest.value) {
+                        guest.focus();
+                        guest.style.borderColor = '#c0392b';
+                        setTimeout(() => guest.style.borderColor = '', 1500);
+                        return;
+                    }
+
+                    // Build message
+                    const msg = {
+                        name: name.value.trim(),
+                        attend: attend.value,
+                        guest: guest.value,
+                        count: document.getElementById('rsvpCount')?.value || '1',
+                        message: document.getElementById('rsvpMessage')?.value || ''
+                    };
+
+                    console.log('📩 RSVP submission:', msg);
+
+                    // Show popup
+                    popup.classList.add('open');
+                    form.reset();
+
+                    // If you have a backend endpoint:
+                            // Send to Discord Webhook
+        if (cfg.formEndpoint) {
+            const message = `📩 **RSVP mới từ ${msg.name}**
+        **Tham dự:** ${msg.attend}
+        **Khách của:** ${msg.guest}
+        **Số lượng:** ${msg.count}
+        **Lời nhắn:** ${msg.message}`;
+
+            fetch(cfg.formEndpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content: message })
+            })
+            .then(res => {
+                if (res.ok) {
+                    console.log('✅ Sent to Discord');
+                    popup.classList.add('open');
+                    form.reset();
+                } else {
+                    console.error('Discord error:', res.status);
+                    alert('Gửi thất bại, vui lòng thử lại!');
+                }
+            })
+            .catch(err => {
+                console.error('❌ Network error:', err);
+                alert('Lỗi kết nối, vui lòng thử lại!');
+            });
+        }
+                });
+
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => popup.classList.remove('open'));
+                }
+                popup.addEventListener('click', function(e) {
+                    if (e.target === this) popup.classList.remove('open');
+                });
+            }
+
+            // ---- INIT ----
+            document.addEventListener('DOMContentLoaded', function() {
+                applyConfig();
+
+                // Countdown
+                const target = cfg.countdownTarget
+                    ? (cfg.countdownTarget > 1000000000000 ? cfg.countdownTarget : cfg.countdownTarget * 1000)
+                    : Date.now() + 7 * 86400000;
+                startCountdown(target);
+
+                // Gallery
+                const images = cfg.galleryImages || [];
+                const thumbs = cfg.galleryThumbs || images;
+                if (images.length) initGallery(images, thumbs);
+
+                // Music
+                const music = cfg.musicList || [];
+                if (music.length) initMusic(music);
+
+                // RSVP
+                initRSVP();
+
+                // Update venue map link
+                const mapLink = document.querySelector('[data-key="venueMapLink"]');
+                if (mapLink && cfg.venueMapLink) {
+                    mapLink.href = cfg.venueMapLink;
+                }
+
+                // Update social links
+                document.querySelectorAll('[data-key^="social"]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    const map = {
+                        socialFacebook: cfg.social?.facebook,
+                        socialTiktok: cfg.social?.tiktok,
+                        socialZalo: cfg.social?.zalo
+                    };
+                    if (map[key]) el.href = map[key];
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
